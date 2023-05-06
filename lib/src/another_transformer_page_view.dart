@@ -432,7 +432,12 @@ class _TransformerPageViewState extends State<TransformerPageView> {
     final Widget child = PageView.builder(
       itemBuilder: builder,
       itemCount: _pageController!.getRealItemCount(),
-      onPageChanged: _onIndexChanged,
+
+      /// Note: turning off onPageChanged when pageController is provided
+      /// fixes the issue of onPageChanged being called twice; once by
+      /// pageController and once by PageView. This is a workaround
+      /// for PageView jumping to the first page when it is rebuilt.
+      // onPageChanged: _onIndexChanged,
       controller: _pageController,
       scrollDirection: widget.scrollDirection,
       physics: widget.physics,
