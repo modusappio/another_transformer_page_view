@@ -437,7 +437,7 @@ class _TransformerPageViewState extends State<TransformerPageView> {
       /// fixes the issue of onPageChanged being called twice; once by
       /// pageController and once by PageView. This is a workaround
       /// for PageView jumping to the first page when it is rebuilt.
-      // onPageChanged: _onIndexChanged,
+      onPageChanged: _onIndexChanged,
       controller: _pageController,
       scrollDirection: widget.scrollDirection,
       physics: widget.physics,
